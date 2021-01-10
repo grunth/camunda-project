@@ -1,0 +1,60 @@
+#version: "3.5"
+#
+#services:
+#
+#  postgres_local:
+#    container_name: postgres_local
+#    build: ../deploy/postgresql
+#    restart: always
+#    ports:
+#      - 5432:5432
+#    environment:
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=123456
+#      - POSTGRES_DB=camunda_db
+#      - PGDATA=/var/lib/postgresql/data/pgdata
+#    volumes:
+#      - pg_data_volume:/var/lib/postgresql/data/pgdata
+#
+#  backend-camunda:
+#    container_name: camunda-project
+#    image: camunda-project:latest
+#    command: java -jar
+#      -Dspring.profiles.active=default
+#      -Dnpa.datasource.url=${POSTGRES_ENDPOINT}
+#      web-fat.jar
+#    ports:
+#      - "8090:8090"
+#    depends_on:
+#      - postgres_local
+#
+#volumes:
+#  pg_data_volume:
+#
+
+version: '3.5'
+
+services:
+  app:
+    image: 'camunda-project:latest'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+    - "8090:8090"
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+    ports:
+    - "5432:5432"

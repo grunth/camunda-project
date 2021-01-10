@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_1x63xwm" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
+  <decision id="DecideonBeveage" name="Decide on Beveage">
+    <decisionTable id="DecisionTable_0pn6tzp" hitPolicy="FIRST">
+      <input id="Input_1" biodi:width="192" camunda:inputVariable="name">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>name</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0rk4f37">
+          <text>"Dale Cooper","Bear Grills","Yoko Ono"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0jx752w" biodi:width="192" camunda:inputVariable="timeOfDay">
+        <inputExpression id="LiteralExpression_0607jrp" typeRef="string">
+          <text>time</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_05mq3c5">
+          <text>"Morning","Afternoon","Evening","Night"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" name="drink" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_1s78s2v">
+          <text>"Damn fine Coffee","A single plum in perfume served in a mans hat","Club mate","Lemonade","Beer"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1h04dyr">
+        <inputEntry id="UnaryTests_0d1nshm">
+          <text>"Dale Cooper","Bear Grills"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1grpsle">
+          <text>"Morning"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p1jd8u">
+          <text>"Damn fine Coffee"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0sl54ok">
+        <inputEntry id="UnaryTests_1csybfv">
+          <text>"Yoko Ono"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xlz45n">
+          <text>"Night"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dso9ah">
+          <text>"A single plum in perfume served in a mans hat"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ptc312">
+        <inputEntry id="UnaryTests_02knp2j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y9zzta">
+          <text>"Afternoon","Evening"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sapo17">
+          <text>"Club mate"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xn04s9">
+        <inputEntry id="UnaryTests_0kzdfwn">
+          <text>"Bear Grills"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rj3dtu">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ubqdor">
+          <text>"Lemonade"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_126c6df">
+        <inputEntry id="UnaryTests_06mo6k2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mn07f1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w7e1ex">
+          <text>"Beer"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="DecideonBeveage">
+        <dc:Bounds height="80" width="180" x="160" y="80" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
